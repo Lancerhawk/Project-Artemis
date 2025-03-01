@@ -1,3 +1,4 @@
+
 .landing-container {
     display: flex;
     flex-direction: column;
@@ -6,12 +7,19 @@
     height: 42vh;
     text-align: center;
     padding: 20px;
+    margin-bottom: 50px;
+    margin-top: 50px;
     transition: all 0.6s ease;
-}
-
+  }
+  
+  .landing-logo {
+    width: 100px; 
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
 .landing-heading {
     font-size: 3rem;
-    color: #333;
     margin-bottom: 10px;
     opacity: 0;
     transform: translateY(-50px);

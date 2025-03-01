@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Link } from 'react-router-dom'; 
 import './AICards.css';
 import Img1 from '../../../assets/AI-img/TutorAI.png';
@@ -7,9 +7,13 @@ import Img3 from '../../../assets/AI-img/AIdev.png';
 import Img4 from '../../../assets/AI-img/AIcreative.png';
 import { FaRobot, FaRegLightbulb, FaUsers, FaBriefcase } from 'react-icons/fa'; 
 
-const AICards = () => {
+const AICards = forwardRef((props, ref) => {
+
+
+
+  
   return (
-    <div className="ai-cards-container">
+    <div ref={ref} className="ai-cards-container">
       <h1 className='Heading-AI-Cards'>Our AI Guilds</h1>
 
       <div className="ai-card">
@@ -109,6 +113,6 @@ const AICards = () => {
       </div>
     </div>
   );
-};
+});
 
 export default AICards;
