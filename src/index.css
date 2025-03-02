@@ -26,6 +26,8 @@
   --scrollbar-thumb: #4A7BD1; 
   --scrollbar-thumb-hover: #2E3447;
   --scrollbar-width: 12px;
+  --form: white;
+  --form-text: black;
 
   
   p{
@@ -47,6 +49,9 @@
 
 :root.dark {
   /* Dark Theme ig */
+  
+  --form-text: white;
+  --form: #4A7BD1;
   --background: #252A3A;
   --buttons-bg: #355A9E;
   --cards-bg: #4A7BD1;
