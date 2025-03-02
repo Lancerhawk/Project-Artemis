@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './Register.css';
 import ImgRegister from '../../../assets/RegisterImage.png';
 
@@ -7,6 +8,8 @@ function Register() {
     const [version, setVersion] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    const navigate = useNavigate(); 
 
     const handleDevAIChange = (e) => {
         setIsDevAIUser(e.target.value === 'yes');
@@ -22,6 +25,10 @@ function Register() {
 
     const toggleConfirmPassword = () => {
         setShowConfirmPassword(!showConfirmPassword);
+    };
+
+    const handleLoginClick = () => {
+        navigate('/login');
     };
 
     return (
@@ -116,7 +123,7 @@ function Register() {
                     </form>
 
                     <div className="login-link">
-                        <p className='para-login'>Already have an account? <a href="/login" className="login-link-text">Login Here</a></p>
+                        <p className='para-login'>Already have an account? <a onClick={handleLoginClick} className="login-link-text">Login Here</a></p>
                     </div>
                 </div>
 
