@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router,Route, Routes } from 'react-router-dom';
 import './App.css';
 
-import Dashboard from './Pages/Dashboard/Dashboard';
 import Layout from './Pages/LandingPages/LayoutArea/Layout';
 import Login from './Pages/AuthPages/LoginPage/Login';
 import Register from './Pages/AuthPages/RegisterPage/Register';
@@ -10,6 +9,7 @@ import HomePage from './Pages/LandingPages/Homepage/HomePage';
 import AboutPage from './Pages/LandingPages/AboutPage/AboutPage';
 import Services from './Pages/LandingPages/Services/Services';
 import ContactUs from './Pages/LandingPages/ContactUs/ContactUs';
+import LayoutDashboard from './Pages/Dashboard/LayoutDashboard/LayoutDashboard';
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Route>
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<LayoutDashboard />} />
       </Routes>
     </Router>
   );
