@@ -12,10 +12,14 @@ function Sidebar({ setActiveComponent, toggleTheme, isDarkTheme }) {
         setSidebarOpen(!isSidebarOpen);
     };
 
-    const handleNavClick = (componentName) => {
+    const handleNavClick = (componentName, isDropdown = false) => {
         setActiveComponent(componentName);
         setActiveLink(componentName);
-        setSidebarOpen(false);
+        setDevGuildOpen(false); 
+        
+        if (!isDropdown) {
+            setSidebarOpen(false); 
+        }
     };
 
     const toggleDevGuildDropdown = () => {
@@ -51,7 +55,7 @@ function Sidebar({ setActiveComponent, toggleTheme, isDarkTheme }) {
 
                 <div className="sidebar-dropdown">
                     <button
-                        className={`sidebar-nav-btn dropdown-btn ${isDevGuildOpen ? "open" : ""}`}
+                        className={`sidebar-nav-btn dropdown-btn ${isDevGuildOpen ? "open" : ""} ${activeLink === "DevGuild" ? "active" : ""}`}
                         onClick={toggleDevGuildDropdown}
                     >
                         Dev-Guild {isDevGuildOpen ? "▲" : "▼"}
@@ -71,7 +75,6 @@ function Sidebar({ setActiveComponent, toggleTheme, isDarkTheme }) {
                         </button>
                     </div>
                 </div>
-
 
                 <button
                     className={`sidebar-nav-btn ${activeLink === "CreativeGuildAI" ? "active" : ""}`}
@@ -104,12 +107,11 @@ function Sidebar({ setActiveComponent, toggleTheme, isDarkTheme }) {
                 <p className="sidebar-profile-name">Eren Yeager</p>
                 <div className="sidebar-bottom-buttons">
                     <button
-                    className=
-                        "sidebar-bottom-btn sidebar-settings-btn"
-                    onClick={() => handleNavClick("Settings")}
-                >
-                    User Settings
-                </button>
+                        className="sidebar-bottom-btn sidebar-settings-btn"
+                        onClick={() => handleNavClick("Settings")}
+                    >
+                        User Settings
+                    </button>
                     <button className="sidebar-bottom-btn sidebar-logout-btn">Logout</button>
                 </div>
             </div>

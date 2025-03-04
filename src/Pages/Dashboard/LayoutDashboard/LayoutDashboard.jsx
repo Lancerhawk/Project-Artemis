@@ -6,6 +6,7 @@ import "./LayoutDashboard.css";
 import SoloDev_Guild from "../Dev-Guild/SoloDev_Guild";
 import GroupDev_Guild from "../Dev-Guild/GroupDev_Guild";
 import Settings_Area from "../../Settings/Settings_Area";
+import RightSidebar from "../../../Components/RightSidebar/RightSidebar";
 
 function LayoutDashboard() {
     const [activeComponent, setActiveComponent] = useState("Dashboard");
@@ -30,6 +31,8 @@ function LayoutDashboard() {
             <div className="main-content-User-Dashboard">
                 {componentMap[activeComponent]}
             </div>
+
+            <RightSidebar/>
         </div>
     );
 }

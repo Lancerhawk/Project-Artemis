@@ -5,5 +5,6 @@
     padding: 20px;
     height: 120vh;
     background: var(--background);
+    text-align: center;
 }
 
