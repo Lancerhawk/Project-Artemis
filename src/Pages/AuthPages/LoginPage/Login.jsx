@@ -20,6 +20,10 @@ function Login() {
         navigate('/register');
     };
 
+    const handleForgotPassClick = () =>{
+        navigate('/forgotpass');
+    }
+
     return (
         <div className="login-container">
             <div className="login-content">
@@ -48,6 +52,10 @@ function Login() {
                         </div>
 
                         <button type="submit" className="login-btn">Login</button>
+
+                        <div className="register-link">
+                            <p className='para-register'>Forgotten Password? <a onClick={handleForgotPassClick} className="register-link-text">Forgot Password</a></p>
+                        </div>
 
                         <div className="register-link">
                             <p className='para-register'>Don't have an account? <a onClick={handleRegisterClick} className="register-link-text">Register Here</a></p>

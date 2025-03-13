@@ -3,7 +3,7 @@
 .main-content-User-Dashboard {
     flex-grow: 1;
     padding: 20px;
-    height: 120vh;
+    height: 100vh;
     background: var(--background);
     text-align: center;
 }

@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 import Logo from "../../assets/Logo/logo.png";
 import Profilepic from "../../assets/profilepic.png";
 import { useState } from "react";
 
-function Sidebar({ setActiveComponent, toggleTheme, isDarkTheme }) {
+function Sidebar({ toggleTheme, isDarkTheme }) {
+    const navigate = useNavigate();
     const [isSidebarOpen, setSidebarOpen] = useState(false);
     const [activeLink, setActiveLink] = useState("Dashboard");
     const [isDevGuildOpen, setDevGuildOpen] = useState(false);
@@ -12,14 +14,15 @@ function Sidebar({ setActiveComponent, toggleTheme, isDarkTheme }) {
         setSidebarOpen(!isSidebarOpen);
     };
 
-    const handleNavClick = (componentName, isDropdown = false) => {
-        setActiveComponent(componentName);
+    const handleNavClick = (route, componentName, isDropdown = false) => {
         setActiveLink(componentName);
-        setDevGuildOpen(false); 
-        
+        setDevGuildOpen(false);
+
         if (!isDropdown) {
-            setSidebarOpen(false); 
+            setSidebarOpen(false);
         }
+
+        navigate(route);
     };
 
     const toggleDevGuildDropdown = () => {
@@ -33,7 +36,7 @@ function Sidebar({ setActiveComponent, toggleTheme, isDarkTheme }) {
             </button>
 
             <div className={`sidebar-top ${isSidebarOpen ? "" : "sidebar-hidden"}`}>
-                <img className="sidebar-logo" src={Logo} alt="Logo" />
+                <img className="sidebar-logo" src={Logo} alt="Logo" draggable='false' />
                 <h1 className="sidebar-company-name">aRTEMIS</h1>
 
                 <button
@@ -48,58 +51,85 @@ function Sidebar({ setActiveComponent, toggleTheme, isDarkTheme }) {
             <div className={`sidebar-nav-links ${isSidebarOpen ? "" : "sidebar-hidden"}`}>
                 <button
                     className={`sidebar-nav-btn ${activeLink === "Dashboard" ? "active" : ""}`}
-                    onClick={() => handleNavClick("Dashboard")}
+                    onClick={() => handleNavClick("/dashboard", "Dashboard")}
                 >
                     Dashboard
                 </button>
 
                 <div className="sidebar-dropdown">
                     <button
-                        className={`sidebar-nav-btn dropdown-btn ${isDevGuildOpen ? "open" : ""} ${activeLink === "DevGuild" ? "active" : ""}`}
+                        className={`sidebar-nav-btn dropdown-btn ${isDevGuildOpen ? "open" : ""} ${["SoloDevGuild", "GroupDevGuild"].includes(activeLink) ? "active" : ""}`}
                         onClick={toggleDevGuildDropdown}
                     >
                         Dev-Guild {isDevGuildOpen ? "▲" : "▼"}
                     </button>
+
                     <div className={`dropdown-content ${isDevGuildOpen ? "show" : ""}`}>
                         <button
-                            className={`sidebar-nav-btn sub-option ${activeLink === "SoloDevGuildAI" ? "active" : ""}`}
-                            onClick={() => handleNavClick("SoloDevGuildAI")}
+                            className={`sidebar-nav-btn sub-option ${activeLink === "SoloDevGuild" ? "active" : ""}`}
+                            onClick={() => handleNavClick("/dashboard/solo-dev-guild", "SoloDevGuild")}
                         >
                             Solo Guild
                         </button>
                         <button
-                            className={`sidebar-nav-btn sub-option ${activeLink === "GroupDevGuildAI" ? "active" : ""}`}
-                            onClick={() => handleNavClick("GroupDevGuildAI")}
+                            className={`sidebar-nav-btn sub-option ${activeLink === "GroupDevGuild" ? "active" : ""}`}
+                            onClick={() => handleNavClick("/dashboard/group-dev-guild", "GroupDevGuild")}
                         >
                             Group Guild
                         </button>
                     </div>
                 </div>
 
+
                 <button
-                    className={`sidebar-nav-btn ${activeLink === "CreativeGuildAI" ? "active" : ""}`}
-                    onClick={() => handleNavClick("CreativeGuildAI")}
+                    className={`sidebar-nav-btn ${activeLink === "CreativeGuild" ? "active" : ""}`}
+                    onClick={() => handleNavClick("/dashboard/creative-guild", "CreativeGuild")}
                 >
                     Creative-Guild AI
                 </button>
+
                 <button
-                    className={`sidebar-nav-btn ${activeLink === "AboutUs" ? "active" : ""}`}
-                    onClick={() => handleNavClick("AboutUs")}
+                    className={`sidebar-nav-btn ${activeLink === "BusinessGuild" ? "active" : ""}`}
+                    onClick={() => handleNavClick("/dashboard/busi-guild", "BusinessGuild")}
                 >
-                    Busi-Guild AI
+                    Business-Guild AI
                 </button>
+
                 <button
-                    className={`sidebar-nav-btn ${activeLink === "Services" ? "active" : ""}`}
-                    onClick={() => handleNavClick("Services")}
+                    className={`sidebar-nav-btn ${activeLink === "TutorGuild" ? "active" : ""}`}
+                    onClick={() => handleNavClick("/dashboard/tutor-guild", "TutorGuild")}
                 >
                     Tutor-Guild AI
                 </button>
+
                 <button
-                    className={`sidebar-nav-btn ${activeLink === "Contact" ? "active" : ""}`}
-                    onClick={() => handleNavClick("Contact")}
+                    className={`sidebar-nav-btn ${activeLink === "TechNews" ? "active" : ""}`}
+                    onClick={() => handleNavClick("/dashboard/technews", "TechNews")}
+                >
+                    Tech News Center
+                </button>
+
+                <button
+                    className={`sidebar-nav-btn ${activeLink === "MarketCenter" ? "active" : ""}`}
+                    onClick={() => handleNavClick("/dashboard/marketcenter", "MarketCenter")}
+                >
+                    Market Center
+                </button>
+
+                <button
+                    className={`sidebar-nav-btn ${activeLink === "Notifications" ? "active" : ""}`}
+                    onClick={() => handleNavClick("/dashboard/notification", "Notifications")}
+                >
+                    Notifications
+                </button>
+
+                <button
+                    className={`sidebar-nav-btn ${activeLink === "Report" ? "active" : ""}`}
+                    onClick={() => handleNavClick("/dashboard/report", "Report")}
                 >
                     Report
                 </button>
+
             </div>
 
             <div className={`sidebar-profile-bottom ${isSidebarOpen ? "" : "sidebar-hidden"}`}>
@@ -107,8 +137,8 @@ function Sidebar({ setActiveComponent, toggleTheme, isDarkTheme }) {
                 <p className="sidebar-profile-name">Eren Yeager</p>
                 <div className="sidebar-bottom-buttons">
                     <button
-                        className="sidebar-bottom-btn sidebar-settings-btn"
-                        onClick={() => handleNavClick("Settings")}
+                        className={`sidebar-bottom-btn sidebar-settings-btn ${activeLink === "Settings" ? "active" : ""}`}
+                        onClick={() => handleNavClick("/dashboard/settings", "Settings")}
                     >
                         User Settings
                     </button>

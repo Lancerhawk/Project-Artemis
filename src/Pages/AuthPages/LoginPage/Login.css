@@ -122,9 +122,51 @@
     border-radius: 0 10px 10px 0;
 }
 
+
+.resend-otp {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.resend-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--buttons-bg);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.resend-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.resend-btn:hover:not(:disabled) {
+    opacity: 0.8;
+}
+
+.recovery-btn{
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--buttons-bg);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+
 .login-image {
     max-width: 85%;
     border-radius: 10px;
+    height: 80vh;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
